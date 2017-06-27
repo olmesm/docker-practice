@@ -1,0 +1,12 @@
+version: '2'
+services:
+  express-app:
+    build: ./express
+    volumes:
+      - ./local-volume:/usr/src/app/public
+  nginx:
+    build: ./nginx
+    ports:
+      - 1234:4567
+    depends_on:
+      - express-app
